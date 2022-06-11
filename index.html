@@ -15,7 +15,7 @@
             <input id="item-title" type="text" placeholder="input name of a new receipe" />
             <button id="click-btn" class="click-btn" onclick="addItem()">Add new receipe</button>
         </form>
-        
+
         <div id="items-list"></div>
     </div>
 
@@ -94,7 +94,9 @@
 
             items.forEach(function (item) {
                 const el = document.createElement('div');
-                el.innerHTML = item.title;
+                const elP = document.createElement('p');
+                el.appendChild(elP)
+                elP.innerHTML = item.title;
 
                 const deleteButton = document.createElement('button');
                 deleteButton.innerHTML = "Delete";

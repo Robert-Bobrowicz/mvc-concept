@@ -5,13 +5,14 @@
 }
 
 .container {
+    width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
-.form-container {
+.form-container, #items-list {
     width: 75%;
     margin-top: 2rem;
     padding: 2rem;
@@ -35,6 +36,7 @@ input::placeholder {
 }
 
 button {
+    width: 25%;
     height: 3rem;
     padding: 1rem 2rem;
     margin-left: 2rem;
@@ -53,22 +55,25 @@ button:hover {
 }
 
 #items-list {
-    width: 75%;
-    padding: 2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin-top: 0;
     flex-direction: column;
 }
 
 #items-list div {
     width: 100%;
-    padding-right: 4.7rem;
     padding-bottom: 1rem;
     margin-top: 1rem;
     margin-bottom: 1rem;
     border-bottom: 1px solid #2d6faa;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
+}
+
+#items-list p {
+    width: 65%;
+}
+
+#items-list button {
+    width: 25%;
 }
