@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" src="./style.css" />
+    <title>MVC concept</title>
+</head>
+
+<body>
+    <input id="item-title" type="text" />
+    <button id="click-btn" class="click-btn" onclick="addItem()">Add new receipe</button>
+    <div id="items-list"></div>
+
+    <script>
+        //Model section, generic data and data operations 
+        let items;
+        const savedItems = JSON.parse(localStorage.getItem('itemsSaved'));
+
+        if (Array.isArray(savedItems)) {
+            items = savedItems;
+        } else {
+            items = [
+                {
+                    title: "Viennese Cheesecake",
+                    id: "id1"
+                },
+                {
+                    title: 'Fit chocolate bar with nuts',
+                    id: "id2"
+                },
+                {
+                    title: "Strawberries in chocolate, by Hand Made by Me&#174",
+                    id: "id3"
+                },
+                {
+                    title: 'German recipe for healthy chocolate bar',
+                    id: "id4"
+                }
+            ];
+        }
+
+
+        function addElementToItems(itemTitle) {
+            items.push({
+                title: itemTitle,
+                id: JSON.stringify(new Date().getTime())
+            });
+
+            saveIems();
+        }
+
+        function removeElementFromItems(idToDelete) {
+            items = items.filter((item) => {
+                if (item.id === idToDelete) { return false } else { return true };
+            });
+
+            saveIems();
+        }
+
+        function saveIems() {
+            localStorage.setItem('itemsSaved', JSON.stringify(items));
+        }
+
+        //Controler section, user interaction with visible html elements
+        function addItem() {
+            let inputText = document.getElementById('item-title');
+            let itemTitle = inputText.value;
+
+            addElementToItems(itemTitle);
+            render();
+            inputText.value = '';
+        }
+
+        function deleteItem(e) {
+            const deleteBtn = e.target;
+            const idToDelete = deleteBtn.id;
+
+            removeElementFromItems(idToDelete);
+            render();
+        }
+
+
+        //View section, data presentation
+        function render() {
+            document.getElementById('items-list').innerHTML = '';
+
+            items.forEach(function (item) {
+                const el = document.createElement('div');
+                el.innerHTML = item.title;
+
+                const deleteButton = document.createElement('button');
+                deleteButton.innerHTML = "Delete";
+                deleteButton.onclick = deleteItem;
+                deleteButton.id = item.id;
+                el.appendChild(deleteButton);
+
+                const itemsList = document.getElementById('items-list');
+                itemsList.appendChild(el);
+            });
+        }
+
+        render();
+
+    </script>
+</body>
+
+</html>
