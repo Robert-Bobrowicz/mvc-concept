@@ -5,14 +5,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" src="./style.css" />
+    <link rel="stylesheet" href="./style.css" />
     <title>MVC concept</title>
 </head>
 
 <body>
-    <input id="item-title" type="text" />
-    <button id="click-btn" class="click-btn" onclick="addItem()">Add new receipe</button>
-    <div id="items-list"></div>
+    <div class="container">
+        <form class="form-container">
+            <input id="item-title" type="text" placeholder="input name of a new receipe" />
+            <button id="click-btn" class="click-btn" onclick="addItem()">Add new receipe</button>
+        </form>
+        
+        <div id="items-list"></div>
+    </div>
 
     <script>
         //Model section, generic data and data operations 
