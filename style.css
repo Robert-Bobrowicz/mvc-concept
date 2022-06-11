@@ -72,6 +72,7 @@ button:hover {
 
 #items-list p {
     width: 65%;
+    font-weight: 500;
 }
 
 #items-list button {

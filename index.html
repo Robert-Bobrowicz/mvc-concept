@@ -94,9 +94,10 @@
 
             items.forEach(function (item) {
                 const el = document.createElement('div');
+
                 const elP = document.createElement('p');
-                el.appendChild(elP)
                 elP.innerHTML = item.title;
+                el.appendChild(elP);
 
                 const deleteButton = document.createElement('button');
                 deleteButton.innerHTML = "Delete";
