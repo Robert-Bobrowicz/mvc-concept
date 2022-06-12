@@ -26,7 +26,7 @@
     <script>
         //Model section, generic data and data operations 
         let items;
-        const savedItems = JSON.parse(localStorage.getItem('itemsSaved'));
+        const savedItems = JSON.parse(localStorage.getItem('savedItems'));
 
         if (Array.isArray(savedItems)) {
             items = savedItems;
@@ -47,6 +47,10 @@
                 {
                     title: 'German recipe for healthy chocolate bar',
                     id: "id4"
+                },
+                {
+                    title: "Desund und lecker Schokoriegel",
+                    id: "1654998307692"
                 }
             ];
         }
@@ -58,7 +62,7 @@
                 id: JSON.stringify(new Date().getTime())
             });
 
-            saveIems();
+            saveItems();
         }
 
         function removeElementFromItems(idToDelete) {
@@ -66,11 +70,11 @@
                 if (item.id === idToDelete) { return false } else { return true };
             });
 
-            saveIems();
+            saveItems();
         }
 
-        function saveIems() {
-            localStorage.setItem('itemsSaved', JSON.stringify(items));
+        function saveItems() {
+            localStorage.setItem('savedItems', JSON.stringify(items));
         }
 
         //Controler section, user interaction with visible html elements
